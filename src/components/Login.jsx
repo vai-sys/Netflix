@@ -54,6 +54,7 @@ const Login = () => {
   const [errorMessage,SetErrorMessage] =useState(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const nameRef=useRef(null)
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -63,14 +64,10 @@ const Login = () => {
    
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-
+    const name=nameRef.current.value;
    
-    const message = checkValidData(email, password);
-    SetErrorMessage(message);
-
-    
-   
-    
+    const message = checkValidData(email, password,name);
+    SetErrorMessage(message);  
   };
 
   return (
@@ -85,7 +82,7 @@ const Login = () => {
       <div>
         <form onSubmit={(e) => e.preventDefault()} className='relative left-0 right-0 w-3/12 p-12 mx-auto text-white bg-black bg-opacity-50'>
           <h1 className='p-10 text-3xl font-bold'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
-          { !isSignInForm && <input type="text" placeholder='Full Name' className='w-full p-2 my-2 bg-gray-500'/>}
+          { !isSignInForm && <input ref={nameRef} type="text" placeholder='Full Name' className='w-full p-2 my-2 bg-gray-500'/>}
           <input ref={emailRef} type="text" placeholder='Email Address' className='w-full p-2 my-2 bg-gray-500'/>
           <p className='py-3 text-lg font-bold text-red-500'>{errorMessage}</p>
           <input  ref={passwordRef} type="password" placeholder="Password" className="w-full p-2 my-2 text-white bg-gray-500" />
