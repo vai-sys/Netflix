@@ -84,14 +84,14 @@ const Login = () => {
     // Check if email and password are not empty
     if (!email.trim() || !password.trim()) {
       setErrorMessage("Email and password are required.");
-      return; // Exit early if fields are empty
+      return; // Exit early if fields are empty 
     }
 
     const message = checkValidData(email, password);
     setErrorMessage(message); 
     if(message) return ;
 
-// sign in signup logic
+// sign in signup logic  
 if(!isSignInForm){
   // signup logic
   createUserWithEmailAndPassword(auth, email, password)
